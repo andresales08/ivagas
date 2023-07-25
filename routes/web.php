@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CompanyController::class, 'index'])->name('empresas');
+Route::get('/empresas', [CompanyController::class, 'index'])->name('empresas');
+Route::get('/empresas/datatable', [CompanyController::class, 'getDataTables'])->name('empresas');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
